@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 class MyTheme{
+  static Color loginButtonColor = Colors.purple;
+  static Color signupButtonColor = Colors.grey.shade400;
   static ThemeData lightTheme(BuildContext context) => ThemeData(
     canvasColor:Colors.white,
     fontFamily: GoogleFonts.poppins().fontFamily,
