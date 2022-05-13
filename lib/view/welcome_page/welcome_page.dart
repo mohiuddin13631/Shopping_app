@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
+import 'package:shopping_app/view/login/login_page.dart';
 
 import 'components/background.dart';
 import 'components/custom_button.dart';
@@ -29,7 +31,7 @@ class welcomePage extends StatelessWidget {
               buttonColor: MyTheme.loginButtonColor,
               buttontext: "LOGIN",
               textColor: Theme.of(context).colorScheme.onPrimary,
-              handleButtonClick: loginButtonClickHandler,
+              handleButtonClick: (){loginButtonClickHandler(context);},
             ),
             SizedBox(
               height: 20,
@@ -45,8 +47,9 @@ class welcomePage extends StatelessWidget {
       ),
     ));
   }
-  loginButtonClickHandler(){
+  loginButtonClickHandler(BuildContext context){
     print("loging clicked");
+    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
   signupButtonClickHandler(){
     print("Signup clicked");
