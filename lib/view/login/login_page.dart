@@ -82,7 +82,7 @@ class LoginPage extends StatelessWidget {
                             style: TextStyle(fontWeight: FontWeight.bold,color: Colors.purple),
                         ),
                       onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUp()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
                       },
                     )
                   ],

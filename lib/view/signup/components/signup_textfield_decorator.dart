@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
-class TextFieldDecorator extends StatelessWidget {
+class SignupTextFieldDecorator extends StatelessWidget {
   final Widget child;
-  const TextFieldDecorator({
+  const SignupTextFieldDecorator({
     Key? key, required this.child,
   }) : super(key: key);
 

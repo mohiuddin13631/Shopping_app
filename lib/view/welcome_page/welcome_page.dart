@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
 import 'package:shopping_app/view/login/login_page.dart';
+import 'package:shopping_app/view/signup/signup.dart';
 
 import 'components/background.dart';
 import 'components/custom_button.dart';
@@ -40,7 +41,7 @@ class welcomePage extends StatelessWidget {
               buttonColor: MyTheme.signupButtonColor,
               buttontext: "SIGNUP",
               textColor: Colors.black,
-              handleButtonClick: signupButtonClickHandler,
+              handleButtonClick: (){signupButtonClickHandler(context);},
             ),
           ],
         ),
@@ -51,8 +52,9 @@ class welcomePage extends StatelessWidget {
     print("loging clicked");
     Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
-  signupButtonClickHandler(){
+  signupButtonClickHandler(BuildContext context){
     print("Signup clicked");
+    Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
   }
 }
 
