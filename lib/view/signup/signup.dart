@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
 import 'package:shopping_app/view/login/components/signup_textfield.dart';
@@ -5,6 +6,7 @@ import 'package:shopping_app/view/login/login_page.dart';
 import 'package:shopping_app/view/signup/components/signup_background.dart';
 import 'package:shopping_app/view/signup/components/signup_textfield_decorator.dart';
 import 'package:shopping_app/view/welcome_page/components/custom_button.dart';
+import 'components/gender_selection.dart';
 import 'components/signup_profile_picture.dart';
 
 class SignUp extends StatelessWidget {
@@ -21,9 +23,10 @@ class SignUp extends StatelessWidget {
     return Scaffold(
       body: SignUpBackground(
           child: SingleChildScrollView(
-            child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
             const Text(
               "Sign Up",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
@@ -80,6 +83,9 @@ class SignUp extends StatelessWidget {
                     userIdTextFieldPrefixIcon: (Icons.person),
                     userIdTextFieldPrefixIconColor: Colors.purple,
                     onUserIdValueChange: (value) {})),
+            //todo: for gender selection
+            SignupTextFieldDecorator(
+                child: GenderSelection()),
             CustomButton(
                 buttonColor: MyTheme.loginButtonColor,
                 buttontext: "Sign Up",
@@ -96,22 +102,24 @@ class SignUp extends StatelessWidget {
                   width: 10,
                 ),
                 InkWell(
-                    child: const Text(
-                  "Login Now",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      color: Colors.purple),
-                ),
-                  onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                  child: const Text(
+                    "Login Now",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.purple),
+                  ),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginPage()));
                   },
                 ),
               ],
             )
-        ],
-      ),
-          )),
+          ],
+        ),
+      )),
     );
   }
 }
+
