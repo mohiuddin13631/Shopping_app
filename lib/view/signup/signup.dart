@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:shopping_app/controller/signup_controller.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
 import 'package:shopping_app/view/login/components/signup_textfield.dart';
 import 'package:shopping_app/view/login/login_page.dart';
@@ -18,6 +21,8 @@ class SignUp extends StatelessWidget {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
+  SignUpController signUpController = Get.put(SignUpController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +39,7 @@ class SignUp extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const SignUpProfilePicture(),
+             SignUpProfilePicture(),
             const SizedBox(
               height: 20,
             ),
