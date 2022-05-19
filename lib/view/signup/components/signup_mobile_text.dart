@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-class SignupUserIdTextField extends StatelessWidget {
-  const SignupUserIdTextField({
+class SignupMobileTextField extends StatelessWidget {
+  const SignupMobileTextField({
     Key? key,
     required this.useridcontroller,
     required this.userIdErrorText,
@@ -22,7 +22,9 @@ class SignupUserIdTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLength: 11,
       textInputAction: TextInputAction.next,
+      keyboardType: TextInputType.number,
       controller: useridcontroller,
       validator: (value) {
         if (value!.isEmpty) {
@@ -37,6 +39,7 @@ class SignupUserIdTextField extends StatelessWidget {
       cursorColor: Theme.of(context).colorScheme.secondary,
       style: TextStyle(color: Theme.of(context).colorScheme.secondary),
       decoration: InputDecoration(
+        counterText: "",
         hintText: userIdHintText,
         hintStyle: TextStyle(color: userIdHintTextColor),
         border: InputBorder.none,

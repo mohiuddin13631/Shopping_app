@@ -5,8 +5,7 @@ import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:shopping_app/controller/gender_selection_controller.dart';
 
 class GenderSelection extends StatelessWidget {
-  GenderSelectionController genderSelectionController =
-      Get.put(GenderSelectionController());
+  GenderSelectionController genderSelectionController = Get.find();
 
   GenderSelection({
     Key? key,

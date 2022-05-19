@@ -3,13 +3,17 @@ import 'package:get/get.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
 import 'package:shopping_app/view/welcome_page/welcome_page.dart';
 
+import 'controller/gender_selection_controller.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  GenderSelectionController genderSelectionController =
+  Get.put(GenderSelectionController());
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
