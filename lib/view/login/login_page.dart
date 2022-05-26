@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get_navigation/src/snackbar/snackbar.dart';
+import 'package:shopping_app/controller/signup_controller.dart';
+import 'package:shopping_app/controller/login_controller.dart';
+import 'package:shopping_app/controller/signup_controller.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
 import 'package:shopping_app/view/login/components/login_background.dart';
 import 'package:shopping_app/view/login/components/password_field.dart';
@@ -13,10 +21,13 @@ class LoginPage extends StatelessWidget {
   TextEditingController useridcontroller = TextEditingController();
   TextEditingController passcontroller = TextEditingController();
 
-  String userIdErrorText = "User id can not be empty";
-  String userIdHintText = "Enter user Id";
+  SignUpController signUpController = Get.put(SignUpController());
+  LoginController loginController = Get.put(LoginController());
+
+  String userIdErrorText = "Mobile number can not be empty";
+  String userIdHintText = "Enter Mobile Number";
   Color userIdHintTextColor = Colors.purple;
-  IconData userIdTextFieldPrefixIcon = Icons.person;
+  IconData userIdTextFieldPrefixIcon = Icons.phone;
   Color userIdTextFieldPrefixIconColor = Colors.purple;
 
   LoginPage({Key? key}) : super(key: key);
@@ -64,25 +75,36 @@ class LoginPage extends StatelessWidget {
                   suffixIconColor: Colors.purple,
                   onUserPassValueChange: (value) {},
                 )),
-                CustomButton(
+                Obx(()=>loginController.isDataSubmitting.value == false ? CustomButton(
                     buttonColor: MyTheme.loginButtonColor,
                     buttontext: "LOGIN",
                     textColor: Colors.white,
-                    handleButtonClick: (){print("login");}
-                    ),
-                const SizedBox(height: 20,),
+                    handleButtonClick: () {
+                      userLogin();
+                    }):CircularProgressIndicator(),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Don't have account ?",style: TextStyle(fontWeight: FontWeight.bold),),
-                    const SizedBox(width: 10,),
+                    const Text(
+                      "Don't have account ?",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     InkWell(
-                        child: const Text(
-                            "Sign Up",
-                            style: TextStyle(fontWeight: FontWeight.bold,color: Colors.purple),
-                        ),
-                      onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
+                      child: const Text(
+                        "Sign Up",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.purple),
+                      ),
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => SignUp()));
                       },
                     )
                   ],
@@ -93,5 +115,15 @@ class LoginPage extends StatelessWidget {
         ],
       ),
     )));
+  }
+
+  void userLogin() {
+    final _isValid = _formKey.currentState!.validate();
+    if (_isValid) {
+      loginController.loginWithDetail(
+          useridcontroller.text, passcontroller.text);
+    } else {
+      return null;
+    }
   }
 }

@@ -20,6 +20,7 @@ class SignUpController extends GetxController {
   String userGender = "";
 
   var isSendingData = false.obs;
+  // var successMsgLoginPage = false.obs;
 
   void setProfileImagePath(String path) {
     profilePath.value = path;
@@ -98,6 +99,14 @@ class SignUpController extends GetxController {
       Map<String, dynamic> responseData = jsonDecode(response.body);
 
       if(responseData['r_msg'] == 'success'){
+        Get.snackbar(
+          "Signup successful",
+          "You registered successfully",
+          backgroundColor: Colors.black,
+          snackPosition: SnackPosition.BOTTOM,
+          borderRadius: 10,
+          borderWidth: 2,
+        );
         Get.to(LoginPage());
       }
       else if(responseData['r_msg'] == 'failed'){
