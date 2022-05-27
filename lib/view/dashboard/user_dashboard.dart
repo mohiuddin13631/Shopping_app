@@ -21,23 +21,25 @@ class UserDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: DashboardBackground(
-        // child: Obx(() => loginController.isDataReadingCompleted.value == true
-        //     ? UserDetailsCard(
-        //   name: UserDataList.name,
-        //   email: UserDataList.email,
-        //   mobile: UserDataList.mobile,
-        //   gender: UserDataList.gender,
-        //   profilePic: UserDataList.profilePic,
-        // )
-        //     : CircularProgressIndicator()),
-        child: UserDetailsCard(
-          name: LoginSingleton.getUserName(),
-          email: LoginSingleton.getUserEmail(),
-          mobile: LoginSingleton.getUserMobile(),
-          gender: LoginSingleton.getUserGender(),
-          profilePic: LoginSingleton.getUserProfilePic(),
-
-        ),
+        child: Obx(() => loginController.isDataReadingCompleted.value == true
+            ? UserDetailsCard(
+          //using model
+          name: UserDataList.name,
+          email: UserDataList.email,
+          mobile: UserDataList.mobile,
+          gender: UserDataList.gender,
+          profilePic: UserDataList.profilePic,
+        )
+            : CircularProgressIndicator()),
+        //todo: using singleton
+        // child: UserDetailsCard(
+        //   name: LoginSingleton.getUserName(),
+        //   email: LoginSingleton.getUserEmail(),
+        //   mobile: LoginSingleton.getUserMobile(),
+        //   gender: LoginSingleton.getUserGender(),
+        //   profilePic: LoginSingleton.getUserProfilePic(),
+        //
+        // ),
       ),
     );
   }

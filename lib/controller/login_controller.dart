@@ -39,19 +39,19 @@ class LoginController extends GetxController{
         // UserDataList.gender = UserDataModel.fromMap(responseData).rUserGender;
 
         //model alternate
-        // UserDataList.profilePic = responseData['rUserProfileImg'];
-        // UserDataList.name = responseData['rUserName'];
-        // UserDataList.email =  responseData['rUserEmail'];
-        // UserDataList.mobile = responseData['rUserMobile'];
-        // UserDataList.gender = responseData['rUserGender'];
+        UserDataList.profilePic = responseData['rUserProfileImg'];
+        UserDataList.name = responseData['rUserName'];
+        UserDataList.email =  responseData['rUserEmail'];
+        UserDataList.mobile = responseData['rUserMobile'];
+        UserDataList.gender = responseData['rUserGender'];
 
         //todo: 2. Singleton class
 
-        LoginSingleton.setUserName(responseData['rUserName']);
-        LoginSingleton.setUserEmail(responseData['rUserEmail']);
-        LoginSingleton.setUserMobile(responseData['rUserMobile']);
-        LoginSingleton.setUserGender(responseData['rUserGender']);
-        LoginSingleton.setUserProfilePic(responseData['rUserProfileImg']);
+        // LoginSingleton.setUserName(responseData['rUserName']);
+        // LoginSingleton.setUserEmail(responseData['rUserEmail']);
+        // LoginSingleton.setUserMobile(responseData['rUserMobile']);
+        // LoginSingleton.setUserGender(responseData['rUserGender']);
+        // LoginSingleton.setUserProfilePic(responseData['rUserProfileImg']);
 
         //todo: 3. shared Preferences
         // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
