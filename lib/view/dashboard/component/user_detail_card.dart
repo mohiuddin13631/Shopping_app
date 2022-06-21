@@ -155,7 +155,7 @@ class UserDetailsCard extends StatelessWidget {
                   top: 50,
                   right: 10,
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
                         boxShadow: [

@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
   TextEditingController passcontroller = TextEditingController();
 
   SignUpController signUpController = Get.put(SignUpController());
-  LoginController loginController = Get.put(LoginController());
+  LoginController loginController = Get.find();
 
   String userIdErrorText = "Mobile number can not be empty";
   String userIdHintText = "Enter Mobile Number";

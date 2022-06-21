@@ -8,6 +8,8 @@ import 'package:shopping_app/model/login_singelton.dart';
 import 'package:shopping_app/model/user_data_model.dart';
 import 'package:shopping_app/model/user_model_list.dart';
 import 'package:shopping_app/view/dashboard/user_dashboard.dart';
+import 'package:shopping_app/view/home/home_page.dart';
+import 'package:shopping_app/view/welcome_page/welcome_page.dart';
 
 class LoginController extends GetxController{
 
@@ -26,47 +28,22 @@ class LoginController extends GetxController{
     var response = await http.post(Uri.parse(CustomWebServices.login_api_url),body:dataToSend);
 
     if(response.statusCode == 200){
+
+     // SharedPreferences is what Android and iOS apps use to store simple data in an allocated space.
+      // This data exists even when the app is shut down and starts up again; we can still retrieve the value as it was.
+      //It has a method, getInstance , which is used to create an instance of a SharedPreferences .
+
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      preferences.setBool("isLoggedin", true);//SharedPreferences stores the data in a key-value pair.
+      preferences.setString("userid", id); //this value set for dashboard controller
+
       isDataSubmitting.value = false; //when response send form api
+
+      Get.off(() => HomePage());
+
       Map<String, dynamic> responseData = jsonDecode(response.body);
       if(responseData['rMsg'] == "success"){
-
-        //three ways to read data
-        //todo: 1.Model
-        // UserDataModel.fromMap(responseData).rUserProfileImg;
-        // UserDataList.name = UserDataModel.fromMap(responseData).rUserName;
-        // UserDataList.email = UserDataModel.fromMap(responseData).rUserEmail;
-        // UserDataList.mobile = UserDataModel.fromMap(responseData).rUserMobile;
-        // UserDataList.gender = UserDataModel.fromMap(responseData).rUserGender;
-
-        //model alternate
-        UserDataList.profilePic = responseData['rUserProfileImg'];
-        UserDataList.name = responseData['rUserName'];
-        UserDataList.email =  responseData['rUserEmail'];
-        UserDataList.mobile = responseData['rUserMobile'];
-        UserDataList.gender = responseData['rUserGender'];
-
-        //todo: 2. Singleton class
-
-        // LoginSingleton.setUserName(responseData['rUserName']);
-        // LoginSingleton.setUserEmail(responseData['rUserEmail']);
-        // LoginSingleton.setUserMobile(responseData['rUserMobile']);
-        // LoginSingleton.setUserGender(responseData['rUserGender']);
-        // LoginSingleton.setUserProfilePic(responseData['rUserProfileImg']);
-
-        //todo: 3. shared Preferences
-        // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-        // Map<String,String> data = {
-        //   "userProfile" : responseData['rUserProfileImg'],
-        //   "userName" : responseData['rUserName'],
-        //   "userEmail" : responseData['rUserEmail'],
-        //   "userMobile" : responseData['rUserMobile'],
-        //   "userGender" : responseData['rUserGender'],
-        // };
-        // sharedPreferences.setString("userdata", json.encode(data));
-
         isDataReadingCompleted.value = true;
-
-        Get.to(UserDashboard());
       }
       else{
         Get.snackbar(
@@ -89,5 +66,17 @@ class LoginController extends GetxController{
         borderWidth: 2,
       );
     }
+  }
+
+  Future<void> logout() async {
+    UserDataList.email = "";
+    UserDataList.name = "";
+    UserDataList.mobile = "";
+    UserDataList.profilePic = "";
+    UserDataList.gender = "";
+
+    SharedPreferences sharedPreferences =await SharedPreferences.getInstance();
+    sharedPreferences.setBool("isLoggedin", false);
+    Get.to(welcomePage());
   }
 }

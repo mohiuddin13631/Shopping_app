@@ -4,6 +4,7 @@ class CustomWebServices {
   //     "https://thedigitalgamezone.com/Abhi/flutter-tutorial-api/signUpUserAPI.php";
 
   static String login_api_url = "https://daffood.000webhostapp.com/API/loginApi.php";
+  static String userprofiledata_url = "https://daffood.000webhostapp.com/API/loginApi_After_success.php";
 
   static String PROFILE_IMAGE = "userProfileImg";
   static String USER_NAME = "userName";
