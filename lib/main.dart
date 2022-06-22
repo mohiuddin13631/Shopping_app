@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopping_app/controller/login_controller.dart';
+import 'package:shopping_app/view/cart/cart_page.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
 import 'package:shopping_app/view/home/home_page.dart';
 import 'package:shopping_app/view/welcome_page/welcome_page.dart';
@@ -37,7 +38,8 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.DarkTheme(context),
-      home: isLoggedIn? HomePage(): welcomePage(),
+      // home: isLoggedIn? HomePage(): welcomePage(),
+      home: CartPage()
     );
   }
 }

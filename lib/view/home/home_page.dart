@@ -19,10 +19,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx( ()=> IndexedStack(
-        index: bottomNavigationController.currentIndex.value,//indext ee je number ta thakbe list er sei position er screen ta show korbe.
+        index: bottomNavigationController.currentIndex.value,//indext ee je number ta thakbe list er sei position er screen ta show korbe. by default its 0 index
           children: screens,//this is list of screen
         ),
       ),
+
       bottomNavigationBar: Obx( ()=>
         BottomNavigationBar(
           type: BottomNavigationBarType.shifting,
@@ -32,9 +33,12 @@ class HomePage extends StatelessWidget {
           showSelectedLabels: true,
           // selectedIconTheme: IconThemeData(color: Colors.green),
           onTap: (index) {
-            bottomNavigationController.changeIndex(index);
+            //todo: by default index number is 0
+            bottomNavigationController.changeIndex(index); //change index number.. ei number onusare screen show korbe and bottom navigation oo change hobe
           },
-          currentIndex: bottomNavigationController.currentIndex.value,//now all value will set according to this value
+
+          currentIndex: bottomNavigationController.currentIndex.value,//bottom navigation will change according to this value
+
           items: const [
             BottomNavigationBarItem(
               icon: Icon(
