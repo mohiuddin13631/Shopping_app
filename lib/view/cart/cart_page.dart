@@ -5,10 +5,13 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:shopping_app/controller/cart_controller/category_controller.dart';
 import 'package:shopping_app/controller/cart_controller/product_controller.dart';
+import 'package:shopping_app/model/cart_model/product_model.dart';
 import 'package:shopping_app/view/cart/components/cart_page_background.dart';
+import 'package:shopping_app/view/cart/components/product_details.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
 
 import 'components/categories_header.dart';
+import 'components/item_cart.dart';
 
 class CartPage extends StatelessWidget {
 
@@ -30,7 +33,33 @@ class CartPage extends StatelessWidget {
                     color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.bold),
               ),
-              Categories()
+              Categories(),
+              
+              Obx( ()=> productController.isDataLoadingCompleted.value == true? Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: MyTheme.defaultPadding,horizontal: MyTheme.defaultPadding),
+                    child: GridView.builder(
+                      itemCount: productController.products.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                          childAspectRatio: 0.65,
+                          mainAxisSpacing: MyTheme.defaultPadding,//padding between two products
+                          crossAxisSpacing: MyTheme.defaultPadding
+                        ),
+                        itemBuilder: (context,index){
+
+                        var currentProduct = productController.products[index];
+                          return ItemCard(
+                            currentProduct: currentProduct,
+                            cardClickHandler: (){
+                              Get.to(ProductDetailPage(products: currentProduct,));
+                            },
+                          );
+                        }),
+                  ),
+                )
+                  :CircularProgressIndicator(),
+              )
             ],
           ),
         ),
@@ -38,4 +67,5 @@ class CartPage extends StatelessWidget {
     );
   }
 }
+
 

@@ -36,7 +36,7 @@ class Categories extends StatelessWidget {
                   () => Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  Text( // category text
                     categoryController.categoryList[index],
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -46,7 +46,7 @@ class Categories extends StatelessWidget {
                             ? Colors.white
                             : Colors.white30),
                   ),
-                  Container(
+                  Container( //category text underline
                     margin: EdgeInsets.only(
                         top: MyTheme.defaultPadding * 0.4),
                     height: 2,
