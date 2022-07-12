@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/model/cart_model/product_model.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
+
 class ItemCard extends StatelessWidget {
   const ItemCard({
     Key? key,
-    required this.currentProduct, required this.cardClickHandler,
+    required this.currentProduct,
+    required this.cardClickHandler,
   }) : super(key: key);
 
   final ProductModel currentProduct;
@@ -14,7 +16,7 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return InkWell(
-      onTap: (){
+      onTap: () {
         cardClickHandler();
       },
       child: Column(
@@ -26,12 +28,14 @@ class ItemCard extends StatelessWidget {
             padding: EdgeInsets.all(MyTheme.defaultPadding),
             decoration: BoxDecoration(
                 color: Color(int.parse(currentProduct.color)),
-                borderRadius: BorderRadius.circular(20)
-            ),
-            child: Image.asset(currentProduct.image),
+                borderRadius: BorderRadius.circular(20)),
+            child: Hero(
+                tag: currentProduct.id,
+                child: Image.asset(currentProduct.image)),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: MyTheme.defaultPadding * 0.5),
+            padding:
+                EdgeInsets.symmetric(vertical: MyTheme.defaultPadding * 0.5),
             child: Text(currentProduct.name),
           ),
           Text(

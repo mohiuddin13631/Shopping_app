@@ -7,7 +7,7 @@ import 'package:shopping_app/controller/cart_controller/category_controller.dart
 import 'package:shopping_app/controller/cart_controller/product_controller.dart';
 import 'package:shopping_app/model/cart_model/product_model.dart';
 import 'package:shopping_app/view/cart/components/cart_page_background.dart';
-import 'package:shopping_app/view/cart/components/product_details.dart';
+import 'package:shopping_app/view/cart/product_detail/product_details.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
 
 import 'components/categories_header.dart';
