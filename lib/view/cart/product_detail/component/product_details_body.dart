@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/model/cart_model/product_model.dart';
+import 'package:shopping_app/view/cart/product_detail/component/product_counter_fav_icon.dart';
 import 'package:shopping_app/view/cart/product_detail/component/product_description.dart';
 import 'package:shopping_app/view/cart/product_detail/component/product_details_image_title_price.dart';
 import 'package:shopping_app/view/cart/product_detail/component/product_color_size.dart';
@@ -19,6 +20,7 @@ class ProductDetailsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
       child: Column(
         children: [
           SizedBox(
@@ -27,7 +29,12 @@ class ProductDetailsBody extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.only(top: size.height * 0.3),
-                  height: size.height * 0.7,
+                  // height: size.height * 0.7,
+                  padding: EdgeInsets.only(
+                    top: size.height * 0.12,
+                    left: MyTheme.defaultPadding,
+                    right: MyTheme.defaultPadding
+                  ),
                   decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
@@ -36,7 +43,8 @@ class ProductDetailsBody extends StatelessWidget {
                   child: Column(
                     children: [
                       ProductColorSize(products: products),
-                      ProductDescription(products: products)
+                      ProductDescription(products: products),
+                      ProductCounterFavIcon(products: products,)
                     ],
                   ),
                 ),

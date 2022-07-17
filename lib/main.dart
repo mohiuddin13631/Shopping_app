@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shopping_app/controller/cart_controller/product_details/cart_controller.dart';
 import 'package:shopping_app/controller/login_controller.dart';
 import 'package:shopping_app/view/cart/cart_page.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
 
   GenderSelectionController genderSelectionController =
   Get.put(GenderSelectionController());
+
+  CartController cartController = Get.put(CartController());
+
   MyApp({Key? key,required this.isLoggedIn}) : super(key: key);
 
   @override

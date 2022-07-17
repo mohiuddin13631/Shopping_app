@@ -41,7 +41,7 @@ class ProductColorSize extends StatelessWidget {
               ],
             ),
           ),
-          Spacer(),
+          // Spacer(),
           Expanded(
               child: RichText(
                 text: TextSpan(children: [
