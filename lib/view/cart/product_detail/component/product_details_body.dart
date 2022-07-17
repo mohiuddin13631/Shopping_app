@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/model/cart_model/product_model.dart';
-import 'package:shopping_app/view/cart/components/product_details_image_title_price.dart';
+import 'package:shopping_app/view/cart/product_detail/component/product_description.dart';
+import 'package:shopping_app/view/cart/product_detail/component/product_details_image_title_price.dart';
+import 'package:shopping_app/view/cart/product_detail/component/product_color_size.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
+
+import 'product_detail_color.dart';
 
 class ProductDetailsBody extends StatelessWidget {
   const ProductDetailsBody({
@@ -29,8 +33,14 @@ class ProductDetailsBody extends StatelessWidget {
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(40),
                           topRight: Radius.circular(40))),
+                  child: Column(
+                    children: [
+                      ProductColorSize(products: products),
+                      ProductDescription(products: products)
+                    ],
+                  ),
                 ),
-                ProductDetailsImageTitlePrice(products: products)
+                ProductDetailsImageTitlePrice(products: products),
               ],
             ),
           ),
