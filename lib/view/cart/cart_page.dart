@@ -5,6 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:shopping_app/controller/cart_controller/category_controller.dart';
 import 'package:shopping_app/controller/cart_controller/product_controller.dart';
+import 'package:shopping_app/controller/cart_controller/product_details/cart_controller.dart';
 import 'package:shopping_app/model/cart_model/product_model.dart';
 import 'package:shopping_app/view/cart/components/cart_page_background.dart';
 import 'package:shopping_app/view/cart/product_detail/product_details.dart';

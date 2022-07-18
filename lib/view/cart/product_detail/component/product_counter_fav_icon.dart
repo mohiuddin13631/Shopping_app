@@ -28,7 +28,9 @@ class ProductCounterFavIcon extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+
           cartCounter(products: products),
+
           InkWell(
             onTap: (){
               favCounterController.addFavItemToList(products);
@@ -48,6 +50,4 @@ class ProductCounterFavIcon extends StatelessWidget {
       ),
     );
   }
-
-
 }
