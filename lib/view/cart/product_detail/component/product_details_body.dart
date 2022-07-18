@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopping_app/model/cart_model/product_model.dart';
 import 'package:shopping_app/view/cart/product_detail/component/product_counter_fav_icon.dart';
 import 'package:shopping_app/view/cart/product_detail/component/product_description.dart';
@@ -6,6 +7,7 @@ import 'package:shopping_app/view/cart/product_detail/component/product_details_
 import 'package:shopping_app/view/cart/product_detail/component/product_color_size.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
 
+import 'add_to_cart_page.dart';
 import 'product_detail_color.dart';
 
 class ProductDetailsBody extends StatelessWidget {
@@ -44,7 +46,8 @@ class ProductDetailsBody extends StatelessWidget {
                     children: [
                       ProductColorSize(products: products),
                       ProductDescription(products: products),
-                      ProductCounterFavIcon(products: products,)
+                      ProductCounterFavIcon(products: products),
+                      addToCartPage(products: products),
                     ],
                   ),
                 ),

@@ -1,16 +1,20 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:shopping_app/controller/cart_controller/product_details/fav_counter_controller.dart';
 import 'package:shopping_app/model/cart_model/product_model.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
 
 import 'component/product_details_body.dart';
 class ProductDetailPage extends StatelessWidget {
-  const ProductDetailPage({Key? key, required this.products}) : super(key: key);
+  ProductDetailPage({Key? key, required this.products}) : super(key: key);
 
   final ProductModel products;//come from card page
+  FavCounterController favCounterController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +45,7 @@ class ProductDetailPage extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(left: MyTheme.defaultPadding,right: MyTheme.defaultPadding),
           child: Badge(
-            badgeContent: Text("0"),
+            badgeContent: Obx(()=> Text(favCounterController.numberOfItems.value.toString())),
               child: SvgPicture.asset("assets/svg/heart.svg",width: 30,)
           ),
         ),

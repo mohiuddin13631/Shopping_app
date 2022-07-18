@@ -8,6 +8,7 @@ import 'package:shopping_app/view/custom_widget/my_theme.dart';
 import 'package:shopping_app/view/home/home_page.dart';
 import 'package:shopping_app/view/welcome_page/welcome_page.dart';
 
+import 'controller/cart_controller/product_details/fav_counter_controller.dart';
 import 'controller/gender_selection_controller.dart';
 
 
@@ -32,6 +33,8 @@ class MyApp extends StatelessWidget {
   Get.put(GenderSelectionController());
 
   CartController cartController = Get.put(CartController());
+
+  FavCounterController favCounterController = Get.put(FavCounterController());
 
   MyApp({Key? key,required this.isLoggedIn}) : super(key: key);
 

@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:shopping_app/controller/cart_controller/product_details/cart_controller.dart';
+import 'package:shopping_app/controller/cart_controller/product_details/fav_counter_controller.dart';
 import 'package:shopping_app/model/cart_model/product_model.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
 
@@ -16,7 +17,7 @@ class ProductCounterFavIcon extends StatelessWidget {
   }) : super(key: key);
 
 
-
+  FavCounterController favCounterController = Get.find();
   final ProductModel products;
   int itemCount = 1;
 
@@ -29,7 +30,9 @@ class ProductCounterFavIcon extends StatelessWidget {
         children: [
           cartCounter(products: products),
           InkWell(
-            onTap: (){},
+            onTap: (){
+              favCounterController.addFavItemToList(products);
+            },
             child: Container(
               padding: const EdgeInsets.all(8.0),
               width: 32,
