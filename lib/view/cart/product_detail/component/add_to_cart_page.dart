@@ -24,6 +24,9 @@ class addToCartPage extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
+              // if(cartController.checkZeroIndex.value == 1){
+              //   cartController.checkZeroIndex.value = 2;
+              // }
               cartController.addItemInCart(products);
             },
             child: Container(

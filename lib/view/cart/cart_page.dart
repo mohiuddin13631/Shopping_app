@@ -17,6 +17,7 @@ import 'components/item_cart.dart';
 class CartPage extends StatelessWidget {
 
   ProductController productController = Get.put(ProductController());
+  CartController cartController = Get.find();
 
   CartPage({Key? key}) : super(key: key);
 
@@ -53,6 +54,9 @@ class CartPage extends StatelessWidget {
                           return ItemCard(
                             currentProduct: currentProduct,
                             cardClickHandler: (){
+                              // if(index == 0){
+                              //   cartController.checkZeroIndex.value = 1;
+                              // }
                               Get.to(ProductDetailPage(products: currentProduct,));
                             },
                           );
