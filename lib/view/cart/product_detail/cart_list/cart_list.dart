@@ -30,7 +30,7 @@ class CartList extends StatelessWidget {
                         var currentItem = cartController.cartItems[index];
                         return Card(
                           clipBehavior: Clip.none,
-                          color: Colors.purple,
+                          color: Color(int.parse(currentItem.product.color)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -57,12 +57,30 @@ class CartList extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Total Amount: \n ${cartController.totalAmount.value.toString()}",style: Theme.of(context).textTheme.headline6,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white30,
+                        borderRadius: BorderRadius.circular(30)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                        child: Text(
+                          "Total Amount: \n ${cartController.totalAmount.value.toString()}",style: Theme.of(context).textTheme.headline6,
                   ),
-                    Text(
-                      "Total Quantity: \n ${cartController.totalQty.value.toString()}",style: Theme.of(context).textTheme.headline6,
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white38,
+                          borderRadius: BorderRadius.circular(30)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "Total Quantity: \n ${cartController.totalQty.value.toString()}",style: Theme.of(context).textTheme.headline6,
                   ),
+                      ),
+                    ),
                   ]
                 ),
               ),

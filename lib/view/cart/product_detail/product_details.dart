@@ -9,6 +9,7 @@ import 'package:shopping_app/controller/cart_controller/product_details/cart_con
 import 'package:shopping_app/controller/cart_controller/product_details/fav_counter_controller.dart';
 import 'package:shopping_app/model/cart_model/product_model.dart';
 import 'package:shopping_app/view/cart/product_detail/cart_list/cart_list.dart';
+import 'package:shopping_app/view/cart/product_detail/favorite_list/favorite_list.dart';
 import 'package:shopping_app/view/custom_widget/my_theme.dart';
 
 import 'component/product_details_body.dart';
@@ -47,11 +48,16 @@ class ProductDetailPage extends StatelessWidget {
         icon: SvgPicture.asset("assets/svg/back.svg",color: Colors.white,),
       ),
       actions: [
-        Padding(
-          padding: EdgeInsets.only(left: MyTheme.defaultPadding,right: MyTheme.defaultPadding),
-          child: Badge(
-            badgeContent: Obx(()=> Text(favCounterController.numberOfItems.value.toString())),
-              child: SvgPicture.asset("assets/svg/heart.svg",width: 30,)
+        InkWell(
+          onTap: (){
+            Get.to(FavoriteList());
+          },
+          child: Padding(
+            padding: EdgeInsets.only(left: MyTheme.defaultPadding,right: MyTheme.defaultPadding),
+            child: Badge(
+              badgeContent: Obx(()=> Text(favCounterController.numberOfItems.value.toString())),
+                child: SvgPicture.asset("assets/svg/heart.svg",width: 30,)
+            ),
           ),
         ),
         InkWell(
