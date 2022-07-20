@@ -46,4 +46,10 @@ class CartController extends GetxController{
   void initializeQuantity(){
     numberOfItems.value = 1;
   }
+
+  void removeThisItemFromList(CartItemListModel currentItem) {
+    cartItems.remove(currentItem);
+    totalAmount.value = totalAmount.value - (currentItem.product.price * currentItem.qty);
+    totalQty.value = totalQty.value - currentItem.qty;
+  }
 }
