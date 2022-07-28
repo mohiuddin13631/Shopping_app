@@ -54,16 +54,13 @@ class CartPage extends StatelessWidget {
                           return ItemCard(
                             currentProduct: currentProduct,
                             cardClickHandler: (){
-                              // if(index == 0){
-                              //   cartController.checkZeroIndex.value = 1;
-                              // }
                               Get.to(ProductDetailPage(products: currentProduct,));
                             },
                           );
                         }),
                   ),
                 )
-                  :CircularProgressIndicator(),
+                  :const CircularProgressIndicator(),
               )
             ],
           ),

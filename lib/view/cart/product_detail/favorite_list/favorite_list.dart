@@ -16,12 +16,13 @@ class FavoriteList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("Favorite List"),
+        backgroundColor: Colors.transparent,
+          title: Text("Favorite List",style: TextStyle(color: Theme.of(context).colorScheme.primary),),
           leading: IconButton(
               onPressed: () {
                 Get.back();
               },
-              icon: SvgPicture.asset("assets/svg/back.svg"))),
+              icon: SvgPicture.asset("assets/svg/back.svg",color: Theme.of(context).colorScheme.primary,))),
       body: FavoriteListBackground(
         child: ListView.builder(
             itemCount: favCounterController.favList.length,

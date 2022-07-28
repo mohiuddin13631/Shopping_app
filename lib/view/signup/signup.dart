@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:shopping_app/controller/gender_selection_controller.dart';
@@ -98,14 +99,16 @@ class SignUp extends StatelessWidget {
                   //todo: for gender selection
                   SignupTextFieldDecorator(
                       child: GenderSelection()),
-                  signUpController.isSendingData.value == false ? CustomButton(
-                      buttonColor: MyTheme.loginButtonColor,
-                      buttontext: "Sign Up",
-                      textColor: Colors.white,
-                      handleButtonClick: () {
-                        signup();
-                      })
-                      :CircularProgressIndicator(),
+                  Obx(()=>
+                    signUpController.isSendingData.value == false ? CustomButton(
+                        buttonColor: MyTheme.loginButtonColor,
+                        buttontext: "Sign Up",
+                        textColor: Colors.white,
+                        handleButtonClick: () {
+                          signup();
+                        })
+                        :CircularProgressIndicator(),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

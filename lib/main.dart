@@ -45,9 +45,8 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.DarkTheme(context),
-      // home: isLoggedIn? HomePage(): welcomePage(),
-      home: CartPage()
+      home: isLoggedIn? HomePage(): welcomePage(),
+      // home: CartPage()
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shopping_app/controller/signup_controller.dart';
+import 'package:shopping_app/view/custom_widget/my_theme.dart';
 
 class SignUpProfilePicture extends StatelessWidget {
   File? pickedFile;
@@ -32,7 +33,7 @@ class SignUpProfilePicture extends StatelessWidget {
         Positioned(
           bottom: 0,
           child: InkWell(
-            child: Icon(Icons.camera),
+            child: Icon(Icons.camera,color: MyTheme.whiteColor,),
             onTap: () {
               showModalBottomSheet(
                   context: context, builder: (context) => bottomSheet(context));

@@ -4,7 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 class MyTheme{
   static Color loginButtonColor = Colors.purple;
   static Color signupButtonColor = Colors.grey.shade400;
-  static Color loginPagBoxColor = Color(0xffccccff);
+  static Color loginPagBoxColor = const Color(0xffccccff);
+  static Color whiteColor = const Color(0xffffffff);
   static double defaultPadding = 20.0;
   static ThemeData lightTheme(BuildContext context) => ThemeData(
     canvasColor:Colors.white,
@@ -12,7 +13,7 @@ class MyTheme{
     cardColor: Colors.white,
     colorScheme: ColorScheme(
         primary: Colors.black,
-        primaryVariant: Colors.black87,
+        primaryVariant: Colors.black54,
         secondary: Colors.black87,
         secondaryVariant: Colors.black87,
         surface: Colors.cyan.shade50,
@@ -32,7 +33,7 @@ class MyTheme{
     cardColor: Colors.black,
       colorScheme: ColorScheme(
         primary: Colors.white,
-        primaryVariant: Colors.white,
+        primaryVariant: Colors.white30,
         secondary: Colors.black,
         secondaryVariant: Colors.white,
         surface: Colors.cyan.shade50,

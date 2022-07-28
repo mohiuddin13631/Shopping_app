@@ -16,7 +16,7 @@ class CartList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: buildAppBar(context),
       body: CartListBackground(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -71,7 +71,7 @@ class CartList extends StatelessWidget {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              color: Colors.white30,
+                              color: Theme.of(context).colorScheme.primaryVariant,
                               borderRadius: BorderRadius.circular(30)),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
@@ -84,7 +84,7 @@ class CartList extends StatelessWidget {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                              color: Colors.white38,
+                              color: Theme.of(context).colorScheme.primaryVariant,
                               borderRadius: BorderRadius.circular(30)),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -102,7 +102,7 @@ class CartList extends StatelessWidget {
     );
   }
 
-  AppBar buildAppBar() {
+  AppBar buildAppBar(BuildContext context) {
     return AppBar(
       elevation: 0,
       backgroundColor: Colors.transparent,
@@ -112,12 +112,12 @@ class CartList extends StatelessWidget {
         },
         icon: SvgPicture.asset(
           "assets/svg/back.svg",
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.primary,
         ),
       ),
-      title: const Text(
+      title: Text(
         "Item list",
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
       ),
     );
   }
